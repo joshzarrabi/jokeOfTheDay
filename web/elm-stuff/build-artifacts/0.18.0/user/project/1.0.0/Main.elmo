@@ -1,0 +1,94 @@
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Main$Model = F3(
+	function (a, b, c) {
+		return {jokeQuestion: a, jokeAnswer: b, showAnswer: c};
+	});
+var _user$project$Main$ShowAnswer = {ctor: 'ShowAnswer'};
+var _user$project$Main$JokeGotten = function (a) {
+	return {ctor: 'JokeGotten', _0: a};
+};
+var _user$project$Main$getJoke = A2(
+	_elm_lang$http$Http$send,
+	_user$project$Main$JokeGotten,
+	_elm_lang$http$Http$getString('/jokes'));
+var _user$project$Main$init = {
+	ctor: '_Tuple2',
+	_0: {jokeQuestion: 'loading joke', jokeAnswer: '', showAnswer: false},
+	_1: _user$project$Main$getJoke
+};
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'GetJoke':
+				return {ctor: '_Tuple2', _0: model, _1: _user$project$Main$getJoke};
+			case 'JokeGotten':
+				if (_p0._0.ctor === 'Ok') {
+					var jokeArray = _elm_lang$core$Array$fromList(
+						A2(_elm_lang$core$String$split, '|', _p0._0._0));
+					var jokeQuestion = function () {
+						var _p1 = A2(_elm_lang$core$Array$get, 0, jokeArray);
+						if (_p1.ctor === 'Nothing') {
+							return '';
+						} else {
+							return _p1._0;
+						}
+					}();
+					var jokeAnswer = function () {
+						var _p2 = A2(_elm_lang$core$Array$get, 1, jokeArray);
+						if (_p2.ctor === 'Nothing') {
+							return '';
+						} else {
+							return _p2._0;
+						}
+					}();
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{jokeQuestion: jokeQuestion, jokeAnswer: jokeAnswer, showAnswer: false}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{showAnswer: true}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
+	});
+var _user$project$Main$GetJoke = {ctor: 'GetJoke'};
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$button,
+				{
+					ctor: '::',
+					_0: model.showAnswer ? _elm_lang$html$Html_Events$onClick(_user$project$Main$GetJoke) : _elm_lang$html$Html_Events$onClick(_user$project$Main$ShowAnswer),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: model.showAnswer ? _elm_lang$html$Html$text('Get Joke') : _elm_lang$html$Html$text('Get Answer'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: model.showAnswer ? _elm_lang$html$Html$text(model.jokeAnswer) : _elm_lang$html$Html$text(model.jokeQuestion),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{init: _user$project$Main$init, view: _user$project$Main$view, update: _user$project$Main$update, subscriptions: _user$project$Main$subscriptions})();
