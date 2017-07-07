@@ -20,11 +20,10 @@ type alias Model =
 
 init : (Model, Cmd Msg)
 init =
-  ( {
-    jokeQuestion = "loading joke"
-  , jokeAnswer = ""
-  , showAnswer = False
-  }
+  ( { jokeQuestion = "loading joke"
+    , jokeAnswer = ""
+    , showAnswer = False
+    }
   , getJoke
   )
 
@@ -75,7 +74,10 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div []
-    [ button [ if model.showAnswer then onClick GetJoke else onClick ShowAnswer] [ if model.showAnswer then text "Get Joke" else text "Get Answer"]
+    [
+      button
+        [ if model.showAnswer then onClick GetJoke else onClick ShowAnswer ]
+        [ if model.showAnswer then text "Get Joke" else text "Get Answer"]
     , if model.showAnswer then text model.jokeAnswer else text model.jokeQuestion
     ]
 
@@ -86,4 +88,3 @@ subscriptions model =
 getJoke : Cmd Msg
 getJoke =
   Http.send JokeGotten ( Http.getString "/jokes")
-
