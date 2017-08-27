@@ -42,7 +42,8 @@ jokes = {
     'Why did the cowboy get a wiener dog?': 'He wanted to get a long little doggie.',
     'If you want to find out who loves you more, stick your wife and dog in the trunk of your car for an hour.': 'When you open the trunk, who is happy to see you?',
     'Sometimes I tuck my knees into my chest and lean forward.': 'That’s just how I roll.',
-    'I intend to live forever.': 'So far, so good'
+    'I intend to live forever.': 'So far, so good',
+    "What's green and has wheels": "Grass, I was just kidding about the wheels"
 }
 
 @app.route('/')
