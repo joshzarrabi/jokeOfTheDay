@@ -1,4 +1,5 @@
 import random
+import datetime
 from flask import Flask, render_template
 app = Flask(__name__, template_folder="web")
 
@@ -50,6 +51,8 @@ def index():
 
 @app.route('/jokes')
 def get_joke():
+    today = str(datetime.date.today())
+    random.seed(today)
     joke = random.choice(list(jokes))
     answer = jokes[joke]
     return joke + "|" + answer

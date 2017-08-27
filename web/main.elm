@@ -31,6 +31,7 @@ type Msg
   = GetJoke
   | JokeGotten (Result Http.Error String)
   | ShowAnswer
+  | DoNothing
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -71,13 +72,16 @@ update msg model =
     ShowAnswer ->
       ( { model | showAnswer = True}, Cmd.none )
 
+    DoNothing ->
+      (model, Cmd.none)
+
 view : Model -> Html Msg
 view model =
   div []
     [
       button
-        [ if model.showAnswer then onClick GetJoke else onClick ShowAnswer ]
-        [ if model.showAnswer then text "Get Joke" else text "Get Answer"]
+        [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer ]
+        [ if model.showAnswer then text "Hope you liked your joke of the day!!!" else text "Get Punchline"]
     , if model.showAnswer then text model.jokeAnswer else text model.jokeQuestion
     ]
 
