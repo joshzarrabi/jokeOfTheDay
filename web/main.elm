@@ -80,7 +80,7 @@ view model =
   div []
     [
       button
-        [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer ]
+        [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer, class "myButton" ]
         [ if model.showAnswer then text "Hope you liked your joke of the day!!!" else text "Get Punchline"]
     , if model.showAnswer then text model.jokeAnswer else text model.jokeQuestion
     ]

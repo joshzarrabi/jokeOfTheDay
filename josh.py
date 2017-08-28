@@ -1,7 +1,7 @@
 import random
 import datetime
 from flask import Flask, render_template
-app = Flask(__name__, template_folder="web")
+app = Flask(__name__, template_folder="web", static_url_path='')
 
 jokes = {
     "You know why you never see elephants hiding up in trees?" : "Because they’re really good at it.",
@@ -57,5 +57,14 @@ def get_joke():
     joke = random.choice(list(jokes))
     answer = jokes[joke]
     return joke + "|" + answer
+
+@app.route('/main.js')
+def send_js():
+    return render_template('main.js')
+
+@app.route('/style.css')
+def send_css():
+    print("hello")
+    return render_template('style.css')
 
 app.run('0.0.0.0', 8080)
