@@ -3,14 +3,16 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Http
 import Array
+import Browser
 
 main =
-  Html.program
-    { init = init
-    , view = view
-    , update = update
-    , subscriptions = subscriptions
-    }
+  Browser.element
+  {
+    init = init,
+    update = update,
+    subscriptions = subscriptions,
+    view = view
+  }
 
 type alias Model =
   { jokeQuestion: String
@@ -18,8 +20,8 @@ type alias Model =
   , showAnswer: Bool
   }
 
-init : (Model, Cmd Msg)
-init =
+init : () -> (Model, Cmd Msg)
+init _ =
   ( { jokeQuestion = "loading joke"
     , jokeAnswer = ""
     , showAnswer = False
