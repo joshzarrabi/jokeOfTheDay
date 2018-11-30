@@ -10,7 +10,6 @@ jokes = {
     "Why aren’t koalas actual bears?": "The don’t meet the koalafications.",
     "A bear walks into a restaurant and say’s I want a grilllllled………………………………………cheese. The waiter says Whats with the pause?": "The bear replies What do you mean, I'm a Bear!",
     "What do you call bears with no ears?": "B",
-    "Why dont blind people skydive?" : "Because it scares the crap out of their dogs.",
     'I went in to a pet shop. I said, “Can I buy a goldfish?” The guy said, “Do you want an aquarium?”' : 'I said, “I don’t care what star sign it is.”',
     'I saw a wino eating grapes.': 'I told him, you gotta wait.',
     'What’s brown and sticky?': 'A stick.',
@@ -39,8 +38,6 @@ jokes = {
     'I couldn’t believe that the highway department called my dad a thief.': 'But when I got home, all the signs were there.',
     'What did the left eye say to the right eye?': 'Between you and me, something smells.',
     'What do Cannon Balls do when they’re in love?': 'Make bbs.',
-    'Why did the cowboy get a wiener dog?': 'He wanted to get a long little doggie.',
-    'If you want to find out who loves you more, stick your wife and dog in the trunk of your car for an hour.': 'When you open the trunk, who is happy to see you?',
     'Sometimes I tuck my knees into my chest and lean forward.': 'That’s just how I roll.',
     'I intend to live forever.': 'So far, so good',
     "What's green and has wheels": "Grass, I was just kidding about the wheels"
