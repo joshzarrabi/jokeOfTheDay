@@ -21,7 +21,6 @@ jokes = {
     'What is the resemblance between a green apple and a red apple?': 'They’re both red except for the green one.',
     'I have an EpiPen.': 'My friend gave it to me when he was dying, it seemed very important to him that I have it.',
     'How did the hipster burn his mouth?': 'He ate the pizza before it was cool.',
-    'What’s the difference between an oral thermometer and a rectal thermometer?': 'The taste.',
     'An atheist, a Crossfitter, and a vegan walk into a bar.': 'I know because they told me.',
     'I waited and stayed up all night and tried to figure out where the sun was.': 'Then it dawned on me.',
     'I told my friend 10 jokes to get him to laugh.': 'Sadly, no pun in 10 did.',
