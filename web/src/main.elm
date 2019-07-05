@@ -1,4 +1,4 @@
-module MyProgram exposing (main)
+module JokeOfTheDay exposing (main)
 
 import Css exposing (..)
 import Html
@@ -54,16 +54,26 @@ btn : List (Attribute msg) -> List (Html msg) -> Html msg
 btn =
     styled button
         [ margin (px 30)
-        , justifyAll (px 100)
+        , borderRadius (px 20)
+        , width (px 200)
+        , height (px 100)
         , display inlineBlock
         , color theme.first
         , backgroundColor theme.second
+        , fontSize (pt 20)
         , hover
             [ backgroundColor theme.third
             , color theme.fourth
+            , fontSize (pt 20)
             ]
         ]
 
+jokeText : List (Attribute msg) -> List (Html msg) -> Html msg
+jokeText =
+  styled div
+    [ fontSize (pt 20)
+    , color theme.fifth
+    ]
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -114,7 +124,9 @@ view model =
       btn
         [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer ]
         [ if model.showAnswer then text "Hope you liked your joke of the day!!!" else text "Get Punchline"]
-    , if model.showAnswer then text model.jokeAnswer else text model.jokeQuestion
+    , jokeText
+        [ ]
+        [ if model.showAnswer then text model.jokeAnswer else text model.jokeQuestion ]
     ]
 
 subscriptions : Model -> Sub Msg

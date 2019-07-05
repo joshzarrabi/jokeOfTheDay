@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>MyProgram</title>
+  <title>JokeOfTheDay</title>
 </head>
 
 <body>
@@ -4523,7 +4523,7 @@ function _Browser_load(url)
 		}
 	}));
 }
-var author$project$MyProgram$JokeGotten = function (a) {
+var author$project$JokeOfTheDay$JokeGotten = function (a) {
 	return {$: 'JokeGotten', a: a};
 };
 var elm$core$Basics$False = {$: 'False'};
@@ -5751,18 +5751,18 @@ var elm$http$Http$send = F2(
 			resultToMessage,
 			elm$http$Http$toTask(request_));
 	});
-var author$project$MyProgram$getJoke = A2(
+var author$project$JokeOfTheDay$getJoke = A2(
 	elm$http$Http$send,
-	author$project$MyProgram$JokeGotten,
+	author$project$JokeOfTheDay$JokeGotten,
 	elm$http$Http$getString('/jokes'));
-var author$project$MyProgram$init = function (_n0) {
+var author$project$JokeOfTheDay$init = function (_n0) {
 	return _Utils_Tuple2(
 		{jokeAnswer: '', jokeQuestion: 'loading joke', showAnswer: false},
-		author$project$MyProgram$getJoke);
+		author$project$JokeOfTheDay$getJoke);
 };
 var elm$core$Platform$Sub$batch = _Platform_batch;
 var elm$core$Platform$Sub$none = elm$core$Platform$Sub$batch(_List_Nil);
-var author$project$MyProgram$subscriptions = function (model) {
+var author$project$JokeOfTheDay$subscriptions = function (model) {
 	return elm$core$Platform$Sub$none;
 };
 var elm$core$Array$fromListHelp = F3(
@@ -5844,11 +5844,11 @@ var elm$core$Array$get = F2(
 	});
 var elm$core$Platform$Cmd$batch = _Platform_batch;
 var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
-var author$project$MyProgram$update = F2(
+var author$project$JokeOfTheDay$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
 			case 'GetJoke':
-				return _Utils_Tuple2(model, author$project$MyProgram$getJoke);
+				return _Utils_Tuple2(model, author$project$JokeOfTheDay$getJoke);
 			case 'JokeGotten':
 				if (msg.a.$ === 'Ok') {
 					var joke = msg.a.a;
@@ -5890,8 +5890,8 @@ var author$project$MyProgram$update = F2(
 				return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
 		}
 	});
-var author$project$MyProgram$DoNothing = {$: 'DoNothing'};
-var author$project$MyProgram$ShowAnswer = {$: 'ShowAnswer'};
+var author$project$JokeOfTheDay$DoNothing = {$: 'DoNothing'};
+var author$project$JokeOfTheDay$ShowAnswer = {$: 'ShowAnswer'};
 var elm$core$String$length = _String_length;
 var elm$core$String$slice = _String_slice;
 var elm$core$String$dropLeft = F2(
@@ -6301,7 +6301,7 @@ var rtfeldman$elm_css$Css$hex = function (str) {
 	}
 	return rtfeldman$elm_css$Css$erroneousHex(str);
 };
-var author$project$MyProgram$theme = {
+var author$project$JokeOfTheDay$theme = {
 	fifth: rtfeldman$elm_css$Css$hex('E85A4F'),
 	first: rtfeldman$elm_css$Css$hex('#EAE7DC'),
 	fourth: rtfeldman$elm_css$Css$hex('E98074'),
@@ -6318,14 +6318,17 @@ var rtfeldman$elm_css$Css$property = F2(
 var rtfeldman$elm_css$Css$backgroundColor = function (c) {
 	return A2(rtfeldman$elm_css$Css$property, 'background-color', c.value);
 };
-var rtfeldman$elm_css$Css$color = function (c) {
-	return A2(rtfeldman$elm_css$Css$property, 'color', c.value);
-};
 var rtfeldman$elm_css$Css$prop1 = F2(
 	function (key, arg) {
 		return A2(rtfeldman$elm_css$Css$property, key, arg.value);
 	});
+var rtfeldman$elm_css$Css$borderRadius = rtfeldman$elm_css$Css$prop1('border-radius');
+var rtfeldman$elm_css$Css$color = function (c) {
+	return A2(rtfeldman$elm_css$Css$property, 'color', c.value);
+};
 var rtfeldman$elm_css$Css$display = rtfeldman$elm_css$Css$prop1('display');
+var rtfeldman$elm_css$Css$fontSize = rtfeldman$elm_css$Css$prop1('font-size');
+var rtfeldman$elm_css$Css$height = rtfeldman$elm_css$Css$prop1('height');
 var rtfeldman$elm_css$Css$Preprocess$ExtendSelector = F2(
 	function (a, b) {
 		return {$: 'ExtendSelector', a: a, b: b};
@@ -6339,9 +6342,8 @@ var rtfeldman$elm_css$Css$pseudoClass = function (_class) {
 };
 var rtfeldman$elm_css$Css$hover = rtfeldman$elm_css$Css$pseudoClass('hover');
 var rtfeldman$elm_css$Css$inlineBlock = {display: rtfeldman$elm_css$Css$Structure$Compatible, value: 'inline-block'};
-var rtfeldman$elm_css$Css$justifyAll = rtfeldman$elm_css$Css$prop1('justify-all');
 var rtfeldman$elm_css$Css$margin = rtfeldman$elm_css$Css$prop1('margin');
-var rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
+var rtfeldman$elm_css$Css$PtUnits = {$: 'PtUnits'};
 var elm$core$String$fromFloat = _String_fromNumber;
 var rtfeldman$elm_css$Css$Internal$lengthConverter = F3(
 	function (units, unitLabel, numericValue) {
@@ -6367,7 +6369,10 @@ var rtfeldman$elm_css$Css$Internal$lengthConverter = F3(
 				unitLabel)
 		};
 	});
+var rtfeldman$elm_css$Css$pt = A2(rtfeldman$elm_css$Css$Internal$lengthConverter, rtfeldman$elm_css$Css$PtUnits, 'pt');
+var rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
 var rtfeldman$elm_css$Css$px = A2(rtfeldman$elm_css$Css$Internal$lengthConverter, rtfeldman$elm_css$Css$PxUnits, 'px');
+var rtfeldman$elm_css$Css$width = rtfeldman$elm_css$Css$prop1('width');
 var rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
 	function (a, b, c) {
 		return {$: 'Node', a: a, b: b, c: c};
@@ -8138,26 +8143,43 @@ var rtfeldman$elm_css$Html$Styled$styled = F4(
 				attrs),
 			children);
 	});
-var author$project$MyProgram$btn = A2(
+var author$project$JokeOfTheDay$btn = A2(
 	rtfeldman$elm_css$Html$Styled$styled,
 	rtfeldman$elm_css$Html$Styled$button,
 	_List_fromArray(
 		[
 			rtfeldman$elm_css$Css$margin(
 			rtfeldman$elm_css$Css$px(30)),
-			rtfeldman$elm_css$Css$justifyAll(
+			rtfeldman$elm_css$Css$borderRadius(
+			rtfeldman$elm_css$Css$px(20)),
+			rtfeldman$elm_css$Css$width(
+			rtfeldman$elm_css$Css$px(200)),
+			rtfeldman$elm_css$Css$height(
 			rtfeldman$elm_css$Css$px(100)),
 			rtfeldman$elm_css$Css$display(rtfeldman$elm_css$Css$inlineBlock),
-			rtfeldman$elm_css$Css$color(author$project$MyProgram$theme.first),
-			rtfeldman$elm_css$Css$backgroundColor(author$project$MyProgram$theme.second),
+			rtfeldman$elm_css$Css$color(author$project$JokeOfTheDay$theme.first),
+			rtfeldman$elm_css$Css$backgroundColor(author$project$JokeOfTheDay$theme.second),
+			rtfeldman$elm_css$Css$fontSize(
+			rtfeldman$elm_css$Css$pt(20)),
 			rtfeldman$elm_css$Css$hover(
 			_List_fromArray(
 				[
-					rtfeldman$elm_css$Css$backgroundColor(author$project$MyProgram$theme.third),
-					rtfeldman$elm_css$Css$color(author$project$MyProgram$theme.fourth)
+					rtfeldman$elm_css$Css$backgroundColor(author$project$JokeOfTheDay$theme.third),
+					rtfeldman$elm_css$Css$color(author$project$JokeOfTheDay$theme.fourth),
+					rtfeldman$elm_css$Css$fontSize(
+					rtfeldman$elm_css$Css$pt(20))
 				]))
 		]));
 var rtfeldman$elm_css$Html$Styled$div = rtfeldman$elm_css$Html$Styled$node('div');
+var author$project$JokeOfTheDay$jokeText = A2(
+	rtfeldman$elm_css$Html$Styled$styled,
+	rtfeldman$elm_css$Html$Styled$div,
+	_List_fromArray(
+		[
+			rtfeldman$elm_css$Css$fontSize(
+			rtfeldman$elm_css$Css$pt(20)),
+			rtfeldman$elm_css$Css$color(author$project$JokeOfTheDay$theme.fifth)
+		]));
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
 	return {$: 'Unstyled', a: a};
@@ -8192,23 +8214,29 @@ var rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
 		'click',
 		elm$json$Json$Decode$succeed(msg));
 };
-var author$project$MyProgram$view = function (model) {
+var author$project$JokeOfTheDay$view = function (model) {
 	return A2(
 		rtfeldman$elm_css$Html$Styled$div,
 		_List_Nil,
 		_List_fromArray(
 			[
 				A2(
-				author$project$MyProgram$btn,
+				author$project$JokeOfTheDay$btn,
 				_List_fromArray(
 					[
-						model.showAnswer ? rtfeldman$elm_css$Html$Styled$Events$onClick(author$project$MyProgram$DoNothing) : rtfeldman$elm_css$Html$Styled$Events$onClick(author$project$MyProgram$ShowAnswer)
+						model.showAnswer ? rtfeldman$elm_css$Html$Styled$Events$onClick(author$project$JokeOfTheDay$DoNothing) : rtfeldman$elm_css$Html$Styled$Events$onClick(author$project$JokeOfTheDay$ShowAnswer)
 					]),
 				_List_fromArray(
 					[
 						model.showAnswer ? rtfeldman$elm_css$Html$Styled$text('Hope you liked your joke of the day!!!') : rtfeldman$elm_css$Html$Styled$text('Get Punchline')
 					])),
-				model.showAnswer ? rtfeldman$elm_css$Html$Styled$text(model.jokeAnswer) : rtfeldman$elm_css$Html$Styled$text(model.jokeQuestion)
+				A2(
+				author$project$JokeOfTheDay$jokeText,
+				_List_Nil,
+				_List_fromArray(
+					[
+						model.showAnswer ? rtfeldman$elm_css$Html$Styled$text(model.jokeAnswer) : rtfeldman$elm_css$Html$Styled$text(model.jokeQuestion)
+					]))
 			]));
 };
 var elm$browser$Browser$External = function (a) {
@@ -8832,17 +8860,17 @@ var rtfeldman$elm_css$VirtualDom$Styled$toUnstyled = function (vdom) {
 	}
 };
 var rtfeldman$elm_css$Html$Styled$toUnstyled = rtfeldman$elm_css$VirtualDom$Styled$toUnstyled;
-var author$project$MyProgram$main = elm$browser$Browser$element(
+var author$project$JokeOfTheDay$main = elm$browser$Browser$element(
 	{
-		init: author$project$MyProgram$init,
-		subscriptions: author$project$MyProgram$subscriptions,
-		update: author$project$MyProgram$update,
-		view: A2(elm$core$Basics$composeR, author$project$MyProgram$view, rtfeldman$elm_css$Html$Styled$toUnstyled)
+		init: author$project$JokeOfTheDay$init,
+		subscriptions: author$project$JokeOfTheDay$subscriptions,
+		update: author$project$JokeOfTheDay$update,
+		view: A2(elm$core$Basics$composeR, author$project$JokeOfTheDay$view, rtfeldman$elm_css$Html$Styled$toUnstyled)
 	});
-_Platform_export({'MyProgram':{'init':author$project$MyProgram$main(
+_Platform_export({'JokeOfTheDay':{'init':author$project$JokeOfTheDay$main(
 	elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
 
-var app = Elm.MyProgram.init({ node: document.getElementById("elm-f0111bc4e658d0f98db96260c16f7e49") });
+var app = Elm.JokeOfTheDay.init({ node: document.getElementById("elm-f0111bc4e658d0f98db96260c16f7e49") });
 if (document.getElementById("elm-f0111bc4e658d0f98db96260c16f7e49"))
 {
   document.getElementById("elm-f0111bc4e658d0f98db96260c16f7e49").innerText = 'This is a headless program, meaning there is nothing to show here.\n\nI started the program anyway though, and you can access it as `app` in the developer console.';
