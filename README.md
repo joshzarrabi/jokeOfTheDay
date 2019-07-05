@@ -1,5 +1,5 @@
 # jokeOfTheDay
 
-A joke generator for stadups
+A joke generator for standups
 
 written in elm
