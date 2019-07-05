@@ -41,20 +41,26 @@ type Msg
   | ShowAnswer
   | DoNothing
 
-theme : { secondary : Color, primary : Color }
+theme : { first: Color, second : Color, third : Color, fourth : Color, fifth : Color }
 theme =
-    { primary = hex "55af6a"
-    , secondary = rgb 250 240 230
-    }
+  { first = hex "#EAE7DC"
+  , second = hex "#D8C3A5"
+  , third = hex "8E8D8A"
+  , fourth = hex "E98074"
+  , fifth = hex "E85A4F"
+  }
 
 btn : List (Attribute msg) -> List (Html msg) -> Html msg
 btn =
     styled button
         [ margin (px 30)
-        , color (rgb 128 128 128)
+        , justifyAll (px 100)
+        , display inlineBlock
+        , color theme.first
+        , backgroundColor theme.second
         , hover
-            [ backgroundColor theme.primary
-            , textDecoration underline
+            [ backgroundColor theme.third
+            , color theme.fourth
             ]
         ]
 
