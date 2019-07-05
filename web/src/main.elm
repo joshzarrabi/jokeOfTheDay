@@ -50,14 +50,19 @@ theme =
   , fifth = hex "E85A4F"
   }
 
+btnDiv : List (Attribute msg) -> List (Html msg) -> Html msg
+btnDiv =
+  styled div
+    [ displayFlex
+      , justifyContent center
+    ]
+
 btn : List (Attribute msg) -> List (Html msg) -> Html msg
 btn =
     styled button
         [ margin (px 30)
         , borderRadius (px 20)
-        , width (px 200)
-        , height (px 100)
-        , display inlineBlock
+        , width auto
         , color theme.first
         , backgroundColor theme.second
         , fontSize (pt 20)
@@ -73,6 +78,7 @@ jokeText =
   styled div
     [ fontSize (pt 20)
     , color theme.fifth
+    , textAlign center
     ]
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -121,9 +127,12 @@ view : Model -> Html Msg
 view model =
   div []
     [
-      btn
-        [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer ]
-        [ if model.showAnswer then text "Hope you liked your joke of the day!!!" else text "Get Punchline"]
+      btnDiv []
+        [
+          btn
+            [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer ]
+            [ if model.showAnswer then text "Hope you liked your joke of the day!!!" else text "Get Punchline"]
+        ]
     , jokeText
         [ ]
         [ if model.showAnswer then text model.jokeAnswer else text model.jokeQuestion ]

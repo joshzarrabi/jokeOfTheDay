@@ -1,6 +1,6 @@
 import random
 import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 app = Flask(__name__, template_folder="web", static_url_path='')
 
 jokes = {
