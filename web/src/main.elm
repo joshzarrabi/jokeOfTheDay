@@ -68,7 +68,7 @@ btn =
         , fontSize (pt 20)
         , hover
             [ backgroundColor theme.third
-            , color theme.fourth
+            , color theme.second
             , fontSize (pt 20)
             ]
         ]
