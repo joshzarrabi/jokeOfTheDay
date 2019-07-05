@@ -1,17 +1,23 @@
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
+module MyProgram exposing (main)
+
+import Css exposing (..)
+import Html
+import Html.Styled exposing (..)
+import Html.Styled.Attributes exposing (css, href, src)
+import Html.Styled.Events exposing (onClick)
+
 import Http
 import Array
 import Browser
 
+main : Program () Model Msg
 main =
   Browser.element
   {
     init = init,
     update = update,
     subscriptions = subscriptions,
-    view = view
+    view = view >> toUnstyled
   }
 
 type alias Model =
@@ -34,6 +40,24 @@ type Msg
   | JokeGotten (Result Http.Error String)
   | ShowAnswer
   | DoNothing
+
+theme : { secondary : Color, primary : Color }
+theme =
+    { primary = hex "55af6a"
+    , secondary = rgb 250 240 230
+    }
+
+btn : List (Attribute msg) -> List (Html msg) -> Html msg
+btn =
+    styled button
+        [ margin (px 30)
+        , color (rgb 128 128 128)
+        , hover
+            [ backgroundColor theme.primary
+            , textDecoration underline
+            ]
+        ]
+
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -81,8 +105,8 @@ view : Model -> Html Msg
 view model =
   div []
     [
-      button
-        [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer, class "myButton" ]
+      btn
+        [ if model.showAnswer then onClick DoNothing else onClick ShowAnswer ]
         [ if model.showAnswer then text "Hope you liked your joke of the day!!!" else text "Get Punchline"]
     , if model.showAnswer then text model.jokeAnswer else text model.jokeQuestion
     ]

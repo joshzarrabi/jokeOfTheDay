@@ -61,7 +61,6 @@ def send_js():
 
 @app.route('/style.css')
 def send_css():
-    print("hello")
     return render_template('style.css')
 
 app.run('0.0.0.0', 8080)
